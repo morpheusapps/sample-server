@@ -46,7 +46,8 @@
     "compile": "tsc",
     "compile:watch": "tsc --watch",
     "lint": "eslint . --ext .ts --fix",
-    "test": "jest",
+    "test": "jest --runInBand --watch",
+    "test:coverage": "jest",
     "doc": "swagger-jsdoc -d swaggerMaker.js"
   },
   "jest": {
