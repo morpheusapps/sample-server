@@ -18,8 +18,6 @@
     "jest/globals": true
   },
   "rules": {
-    "semi": [1, "always"],
-    "indent": [1, 2],
     "key-spacing": 0,
     "keyword-spacing": [0, { "before": false }],
     "space-before-blocks": [0, "never"],
