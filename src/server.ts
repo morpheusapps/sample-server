@@ -3,6 +3,10 @@ import bodyParser from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
 import { routes } from './routes';
+import { RunServer } from './utils/RunServer';
+import { GetUrlByEnv } from './utils/GetUrlByEnv';
+import { urls } from './const';
+import { Server } from 'http';
 
 const app = express();
 
@@ -13,17 +17,12 @@ app.use(bodyParser.json());
 
 app.use('/', routes);
 
-interface ServerConfiguration {
-  url: string;
-  port: number | string;
-}
-
-export const runServer = async ({
-  url,
-  port
-}: ServerConfiguration): Promise<void> => {
-  app.listen(port, (): void =>
-    // eslint-disable-next-line no-console
-    console.log(`running on: ${url}:${port}`)
-  );
+export const runServer = (port: string | number): Promise<Server> => {
+  const getUrlByEnv = GetUrlByEnv(urls);
+  return RunServer({
+    app,
+    port,
+    env: process.env.NODE_ENV,
+    mapEnvToUrl: getUrlByEnv
+  });
 };
