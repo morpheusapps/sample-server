@@ -1,5 +1,5 @@
 import { CreateRouter } from '../utils/CreateRouter';
-import { Route } from '../../types/server/Route';
+import { Route } from '../../types/serverTypes/Route';
 
 const path = '/health';
 
