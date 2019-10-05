@@ -1,7 +1,8 @@
 import winston from 'winston';
 
 const myFormat = winston.format.printf(
-  ({ timestamp, level, message }): string => `${level}: ${timestamp} ${message}`
+  ({ timestamp, level, message }: { [key: string]: string }): string =>
+    `${level}: ${timestamp} ${message}`
 );
 
 const logger = winston.createLogger({
